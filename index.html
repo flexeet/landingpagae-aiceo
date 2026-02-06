@@ -1,14 +1,322 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/aiceo-new/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI CEO</title>
-    <script type="module" crossorigin src="/aiceo-new/assets/index-WYfur_1x.js"></script>
-    <link rel="stylesheet" crossorigin href="/aiceo-new/assets/index-nyEdfyPz.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The AI CEO - Neuro-Cognitive Engine</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%23f59e0b'/><stop offset='100%25' style='stop-color:%23f97316'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='url(%23g)'/><g transform='translate(50,50)'><path fill='%23fff' d='M-15-18c-6 0-11 5-11 11 0 3 1 6 3 8v5c0 1 1 2 2 2h12c1 0 2-1 2-2v-5c2-2 3-5 3-8 0-6-5-11-11-11zm-6 11c0-3 2.5-6 6-6s6 3 6 6-2.5 6-6 6-6-3-6-6zm3 0c0 1.5 1.5 3 3 3s3-1.5 3-3-1.5-3-3-3-3 1.5-3 3z'/><circle cx='-18' cy='-8' r='2' fill='%23fff'/><circle cx='-12' cy='-8' r='2' fill='%23fff'/><path fill='%23fff' d='M5-18c6 0 11 5 11 11 0 3-1 6-3 8v5c0 1-1 2-2 2H-1c-1 0-2-1-2-2v-5c-2-2-3-5-3-8 0-6 5-11 11-11zm6 11c0-3-2.5-6-6-6s-6 3-6 6 2.5 6 6 6 6-3 6-6zm-3 0c0 1.5-1.5 3-3 3s-3-1.5-3-3 1.5-3 3-3 3 1.5 3 3z'/><circle cx='18' cy='-8' r='2' fill='%23fff'/><circle cx='12' cy='-8' r='2' fill='%23fff'/></g></svg>">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles extracted from React -->
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #09090b; /* zinc-950 */
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Animations */
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(251, 191, 36, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(251, 191, 36, 0.6); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        @keyframes slide-up {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .animate-gradient {
+            background-size: 200% 200%;
+            animation: gradient-shift 8s ease infinite;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .animate-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        /* Hover Effects */
+        .hover-tilt {
+            transition: transform 0.3s ease;
+        }
+        .hover-tilt:hover {
+            transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02);
+        }
+
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .stagger-item {
+            opacity: 0;
+            animation: slide-up 0.6s ease forwards;
+        }
+
+        /* Scroll Reveal Classes */
+        .reveal-hidden {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: all 0.7s ease-out;
+        }
+        .reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #18181b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3f3f46;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #52525b;
+        }
+
+        /* ==========================================
+           FLOATING HEADER GLASSMORPHISM EFFECT
+           ========================================== */
+        #main-header {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        #main-header > div {
+            pointer-events: auto;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            width: 100%;
+        }
+
+        /* Scrolled State - Floating Pill Effect */
+        #main-header.scrolled {
+            padding-top: 20px;
+        }
+
+        #main-header.scrolled > div {
+            width: 90% !important;
+            max-width: 1000px !important;
+            margin: 0 auto;
+            padding: 8px 24px !important;
+
+            /* Glassmorphism Effect (Dark Theme) */
+            background: rgba(24, 24, 27, 0.7) !important;
+            backdrop-filter: blur(24px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+
+            /* Border & Shadow */
+            border: 1.5px solid transparent !important;
+            border-radius: 100px !important;
+
+            box-shadow:
+                0 8px 32px 0 rgba(0, 0, 0, 0.4),
+                0 4px 12px 0 rgba(0, 0, 0, 0.3) !important;
+        }
+
+        /* Logo Scaling */
+        #main-header #header-logo-bg {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #main-header.scrolled #header-logo-bg {
+            width: 32px !important;
+            height: 32px !important;
+        }
+
+        #main-header.scrolled #header-logo-bg i {
+            width: 18px !important;
+            height: 18px !important;
+        }
+
+        /* Nav Links - Smaller on scroll */
+        #main-header.scrolled .nav-link {
+            padding: 6px 12px !important;
+            font-size: 13px !important;
+        }
+
+        #main-header.scrolled .btn-cta {
+            padding: 6px 16px !important;
+            font-size: 13px !important;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            #main-header.scrolled > div {
+                width: 95% !important;
+                padding: 6px 16px !important;
+            }
+
+            #main-header.scrolled #header-logo-bg {
+                width: 28px !important;
+                height: 28px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Containers for Sections -->
+    <div id="header-container"></div>
+    <div id="hero-container"></div>
+    <div id="drift-container"></div>
+    <div id="quality-container"></div>
+    <div id="army-container"></div>
+    <div id="mindset-container"></div>
+    <div id="comparison-container"></div>
+    <div id="methodology-container"></div>
+    <div id="plans-container"></div>
+    <div id="warning2026-container"></div>
+    <div id="faq-container"></div>
+    <div id="cta-container"></div>
+    <div id="footer-container"></div>
+
+    <!-- Scripts for Interactivity -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Function to load components
+        async function loadComponents() {
+            const components = [
+                'header', 'hero', 'drift', 'quality', 'army',
+                'mindset', 'comparison', 'methodology', 'plans',
+                'warning2026', 'faq', 'cta', 'footer'
+            ];
+
+            for (const component of components) {
+                try {
+                    const response = await fetch(`sections/${component}.html`);
+                    if (!response.ok) throw new Error(`Failed to load ${component}`);
+                    const html = await response.text();
+                    document.getElementById(`${component}-container`).innerHTML = html;
+                } catch (error) {
+                    console.error(`Error loading ${component}:`, error);
+                }
+            }
+
+            // Re-initialize icons and scripts after loading content
+            lucide.createIcons();
+            initializeScripts();
+        }
+
+        // Initialize custom scripts (scroll, mobile menu, observers)
+        function initializeScripts() {
+        // Header Scroll Effect - Floating Glassmorphism
+        const header = document.getElementById('main-header');
+        const logoBg = document.getElementById('header-logo-bg');
+
+        if (header && logoBg) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    // Add scrolled class for floating pill effect
+                    header.classList.add('scrolled');
+
+                    // Logo gradient effect when scrolled
+                    logoBg.classList.remove('bg-amber-500/10', 'border', 'border-amber-500/30');
+                    logoBg.classList.add('bg-gradient-to-br', 'from-amber-500', 'to-orange-500');
+                } else {
+                    // Remove scrolled class
+                    header.classList.remove('scrolled');
+
+                    // Logo back to transparent
+                    logoBg.classList.add('bg-amber-500/10', 'border', 'border-amber-500/30');
+                    logoBg.classList.remove('bg-gradient-to-br', 'from-amber-500', 'to-orange-500');
+                }
+            });
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Intersection Observer for Reveal Animations
+        const observerOptions = {
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('reveal-hidden');
+                    entry.target.classList.add('reveal-visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-hidden').forEach(el => {
+            observer.observe(el);
+        });
+        }
+
+        // Smooth Scroll Function (Global)
+        window.scrollToSection = function(id) {
+            const element = document.getElementById(id);
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                if (mobileMenu) mobileMenu.classList.add('hidden'); // Close mobile menu if open
+            }
+        }
+
+        // Start loading
+        loadComponents();
+    </script>
+</body>
 </html>
